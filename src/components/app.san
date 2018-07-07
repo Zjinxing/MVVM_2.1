@@ -1,0 +1,74 @@
+<template>
+	<div class="wrapper">
+		<div class="info">
+			<input type="text" class="name" placeholder="姓名（string）" value="{= person.name =}">
+			<input type="number" class="age" placeholder="年龄（number）" value="{= person.age =}">
+			<input type="text" class="intro" placeholder="简介（string）" value="{= person.intro =}">
+		</div>
+		<div class="remove">
+			<span>信息： </span><button on-click="clearInfo" class="btn">移除信息</button>
+		</div>
+		<ul class="list">
+			<li>姓名：<span>{{person.name}}</span></li>
+			<li>年龄：<span>{{person.age}}</span></li>
+			<li>简介：<span>{{person.intro}}</span></li>
+		</ul>
+	</div>
+</template>
+
+<script type="text/javascript">
+  import {DataTypes} from 'san';
+
+	export default {
+    initData() {
+      return {
+        person: {
+          name: '',
+          age: '',
+          intro: ''
+        }
+      }
+    },
+    DataTypes: {
+      name: DataTypes.string,
+      age: DataTypes.Number,
+      intro: DataTypes.string
+    },
+    clearInfo() {
+      this.data.set('person',{
+        name: '',
+        age: '',
+        intro: ''
+      })
+    }
+  }
+</script>
+
+<style lang = 'stylus'>
+  .wrapper
+    .info
+      input
+        width: 150px
+        height: 25px
+        border: 1px solid #bbb
+    .remove
+      margin-top: 10px
+      font-size: 12px
+      font-weight: 700
+      button
+        background: lightgray
+        border-radius: 3px
+    ul
+      padding-left: 0
+      list-style: none  
+      li
+        font-size: 12px
+        span
+          display: inline-block
+          width: 50px
+          height: 14px
+          line-height: 14px
+          font-size: 12px
+          border-bottom: 1px solid #000
+          box-sizing: border-box  
+</style>
